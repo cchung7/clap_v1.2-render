@@ -1,7 +1,10 @@
 # CLAP_V1.2 - County-level Air Quality Prediction System
 
-The CLAP system is a web-based predictive analytics application that forecasts the next-day average Air Quality Index (AQI) for U.S. counties using historical AQI measurements published by the U.S. Environmental Protection Agency (EPA). The system automatically ingests EPA datasets, validates and preprocesses the dataset, generates lag-based and temporal features, and applies a trained machine-learning model to produce predictions with probability distributions across EPA-defined AQI categories and labels.
-The web dashboard provides intuitive access to next-day predictions, 30-day AQI trends, confidence scores, and category-based visualizations consistent with EPA color standards. Architecturally, the system follows a layered client-server design, where the backend exposes RESTful API endpoints and a frontend renders the visual interactive output. The system prioritizes accessibility and usability, offering rapid data-driven insight.
+The CLAP system is a web-based predictive analytics application that forecasts the next-day average Air Quality Index (AQI) for U.S. counties using historical AQI measurements published by the U.S. Environmental Protection Agency (EPA). 
+
+CLAP ingests EPA datasets, validates and preprocesses the dataset, generates lag-based and temporal features, and applies a trained machine-learning model to produce predictions with probability distributions across EPA-defined AQI categories and labels.
+
+The dashboard provides intuitive access to next-day predictions, 30-day AQI trends, confidence scores, and category-based visualizations consistent with EPA color standards.
 
 ### URL
 https://clap-v1-2-render.onrender.com
