@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: clap-app
+    env: python
+    buildCommand: cd frontend && npm install && npm run build && cd .. && pip install -r requirements.txt
+    startCommand: gunicorn --chdir backend --bind 0.0.0.0:$PORT app:app
+    envVars:
+      - key: FLASK_ENV
+        value: production
+      - key: PYTHON_VERSION
+        value: 3.11.0
+

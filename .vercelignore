@@ -1,0 +1,35 @@
+# Ignore Flask backend (we use serverless functions instead)
+backend/
+*.pyc
+__pycache__/
+*.log
+.env
+.env.local
+.DS_Store
+.git/
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Exclude development files
+install_simple.sh
+run.bat
+run.sh
+train_balanced_model.py
+train_prototype_model.py
+INSTALL.md
+PROJECT_OVERVIEW.md
+REQUIREMENTS.md
+README.md
+
+# CRITICAL: Exclude large data files (will be loaded from external storage)
+data/
+models/
+
+# Note: frontend/src/ is NEEDED for build - don't exclude it!
+# Only exclude frontend files that aren't needed for build
+frontend/node_modules/
+frontend/dist/
+frontend/README.md
