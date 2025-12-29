@@ -54,8 +54,7 @@ clap_v1.2-render/
 ├── data/                  # AQI datasets & Python Data Pipeline template
 ├── models/                # Trained ML models (.pkl)
 ├── frontend/              # React/Html/CSS web dashboard & Vite server
-├── backend/               # Python API backend & Flask server
-└── documentation & demo   # Project documentation & demo video
+└── backend/               # Python API backend & Flask server
 ```
 
 ## API Endpoints
