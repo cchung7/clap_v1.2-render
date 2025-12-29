@@ -1,16 +1,17 @@
 # CLAP_V1.2 - County-level Air Quality Prediction System
 
-A machine learning-powered web application that predicts Air Quality Index (AQI) for counties across the United States with multi-day forecasting capabilities.
+The CLAP system is a web-based predictive analytics application that forecasts the next-day average Air Quality Index (AQI) for U.S. counties using historical AQI measurements published by the U.S. Environmental Protection Agency (EPA). The system automatically ingests EPA datasets, validates and preprocesses the dataset, generates lag-based and temporal features, and applies a trained machine-learning model to produce predictions with probability distributions across EPA-defined AQI categories and labels.
+The web dashboard provides intuitive access to next-day predictions, 30-day AQI trends, confidence scores, and category-based visualizations consistent with EPA color standards. Architecturally, the system follows a layered client-server design, where the backend exposes RESTful API endpoints and a frontend renders the visual interactive output. The system prioritizes accessibility and usability, offering rapid data-driven insight.
+
+### URL
+https://clap-v1-2-render.onrender.com
 
 ## Features
 
-- **Multi-Day Forecasting**: Predict AQI for 1, 3, 7, or 14 days ahead
-- **Two ML Models**: 
-  - **Balanced Model** (R² = 0.72) - Recommended for best performance
-  - **Prototype Model** (R² = 0.46) - Original baseline model
-- **Interactive Dashboard**: Beautiful web interface with EPA-compliant color coding
-- **County Coverage**: 773 counties across the United States
-- **Real-time Predictions**: RESTful API with instant results
+- **Next-Day Forecasting**: Predict AQI for the following day of the current time/date.
+- **Two ML Models**: Balanced (new) & prototype (old)
+- **Interactive Dashboard**: Reactive web interface with EPA-compliant color coding
+- **County Coverage**: Over 770+ U.S. counties
 
 ## Model Performance
 
@@ -19,43 +20,39 @@ A machine learning-powered web application that predicts Air Quality Index (AQI)
 | Balanced | 0.72 | 93.47 | **Recommended** - Best overall performance |
 | Prototype | 0.46 | 177.72 | Baseline comparison |
 
-## Quick Start
-
 ### Prerequisites
-- Python 3.13+
+- Python 3.12, 3.14
 - Node.js v22.21.0+
 
-### Installation
+## Render Settings
 
-1. **Clone the repository**
-   ```bash
-   git clone <repository-url>
-   cd clap-project
+- **Repository**
    ```
-
-2. **Run the setup script**
-   ```bash
-   # Mac/Linux
-   ./run.sh
-   
-   # Windows
-   run.bat
+   https://github.com/cchung7/clap_v1.2-render
    ```
-
-3. **Access the application**
-   - Open your browser to `http://localhost:5001`
-   - Select a county and model
-   - Generate forecasts!
+- **Branch**
+   ```
+   main
+   ```
+- **Build Command**
+   ```
+   $  cd frontend && npm ci && npm run build && cd .. && pip install -r requirements.txt
+   ```
+- ** Start Command**
+   ```
+   $  gunicorn --chdir backend --bind 0.0.0.0:$PORT app:app
+   ```
 
 ## Project Structure
 
 ```
-clap-project/
-├── backend/           # Flask API server
-├── frontend/          # Web dashboard
-├── data/             # AQI datasets
-├── models/           # Trained ML models
-└── requirements.txt  # Python dependencies
+clap_v1.2-render/
+├── api/                   # Backend API routes
+├── data/                  # AQI datasets & Python Data Pipeline template
+├── models/                # Trained ML models (.pkl)
+├── frontend/              # React/Html/CSS web dashboard & Vite server
+├── backend/               # Python API backend & Flask server
+└── documentation & demo   # Project documentation & demo video
 ```
 
 ## API Endpoints
@@ -76,24 +73,14 @@ curl -X POST http://localhost:5001/api/aqi/predict \
   -d '{"county": "Dallas", "state": "Texas", "model": "balanced", "days": 1}'
 ```
 
-### Multi-Day Forecast (Optional)
-```bash
-curl -X POST http://localhost:5001/api/aqi/predict \
-  -H "Content-Type: application/json" \
-  -d '{"county": "Dallas", "state": "Texas", "model": "balanced", "days": 7}'
-```
-
 ## Technical Details
 
 - **Framework**: Flask (Python), Vite (React)
 - **ML Library**: LightGBM
 - **Frontend**: HTML5, CSS3, JavaScript (React), Chart.js
-- **Data Source**: EPA AQI datasets (2024)
-- **Deployment**: Local development server (port 5001)
-
----
-
-For detailed installation instructions, see [INSTALL.md](INSTALL.md)
+- **Data Source**: EPA 2024 Daily AQI dataset (Last Updated: Sept 2025)
+- **Deployment**: Render
+- **Repo**: https://github.com/cchung7/clap_v1.2-render
 
 ---
 
