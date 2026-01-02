@@ -41,7 +41,7 @@ https://clap-v1-2-render.onrender.com
    ```
    $  cd frontend && npm ci && npm run build && cd .. && pip install -r requirements.txt
    ```
-- ** Start Command**
+- **Start Command**
    ```
    $  gunicorn --chdir backend --bind 0.0.0.0:$PORT app:app
    ```
